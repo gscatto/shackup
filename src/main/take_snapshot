@@ -1,2 +1,2 @@
 #!/usr/bin/env -S sh -eu
-mkdir -p $1/archive $1/current
+mkdir -p $1/archive/all $1/current
