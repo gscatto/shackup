@@ -43,7 +43,7 @@ when_take_snapshot () {
 }
 
 when_check_snapshots () {
-    CHECKSUM_CHECK="cat > $TMP/checksum_checks" COMPRESSION_DECOMPRESS="sed 's/^<\(.*\)>$/\1/'" src/main/check_snapshots $(target)
+    CHECKSUM_CHECK="cat >> $TMP/checksum_checks" COMPRESSION_DECOMPRESS="sed 's/^<\(.*\)>$/\1/'" src/main/check_snapshots $(target)
 }
 
 then_create_directory () {
