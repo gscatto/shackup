@@ -1,3 +1,4 @@
 #!/usr/bin/env -S sh -eu
+TARGET=$1
 TIMESTAMP=$2
-mkdir -p $1/archive/all/$TIMESTAMP $1/current
+mkdir -p $TARGET/archive/all/$TIMESTAMP $TARGET/current
