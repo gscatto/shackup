@@ -1,1 +1,4 @@
 #!/usr/bin/env -S sh -eu
+for TEST in $(find src/test -type f -name '*.sh'); do
+    sh -c ". $TEST"
+done
