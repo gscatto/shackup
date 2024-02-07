@@ -2,7 +2,7 @@
 EXITCODE=0
 . lib/test/before-all.sh
 for TEST in $(find src/test -type f -name '*.sh'); do
-    if ! sh -c "set -eu && . lib/test/before-each.sh && . $TEST && . lib/test/after-each.sh"; then
+    if ! sh -c "set -eu && . lib/test/before-each.sh && $TEST_VARIABLES . $TEST && . lib/test/after-each.sh"; then
         echo "ERROR: $TEST"
         EXITCODE=1
     fi
