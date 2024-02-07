@@ -59,7 +59,8 @@ then_target_has_file () {
         tree $(target)
         exit 1
     fi
-    if [ ! "$FILE_CONTENTS" = "$(cat $FILE_PATH)" ]; then
+    echo "$FILE_CONTENTS" > $TMP/actual
+    if ! diff $TMP/actual $FILE_PATH > /dev/null; then
         echo ERROR: expecting $FILE_PATH to have the following content:
         echo "$FILE_CONTENTS"
         echo ERROR: but got
