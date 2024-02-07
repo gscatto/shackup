@@ -13,6 +13,10 @@ given_file () {
     echo "$FILE_CONTENTS" > $(source)/$FILE_PATH
 }
 
+given_source_directory_exists () {
+    mkdir -p $(source)
+}
+
 when_take_snapshot () {
     src/main/take_snapshot $(source) $(target) $TIMESTAMP
 }

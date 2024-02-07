@@ -3,6 +3,6 @@ SOURCE=$1
 TARGET=$2
 TIMESTAMP=$3
 mkdir -p $TARGET/archive/all/$TIMESTAMP $TARGET/latest/all
-if [ -f $SOURCE/hello.txt ]; then
+if [ ! -z "$(ls $SOURCE)" ]; then
     cp $SOURCE/hello.txt $TARGET/latest/all/hello.txt
 fi
