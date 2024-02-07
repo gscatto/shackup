@@ -1,2 +1,0 @@
-take_snapshot
-then_create_directory current
