@@ -39,7 +39,7 @@ given_source_directory_exists () {
 }
 
 when_take_snapshot () {
-    src/main/take_snapshot $(source) $(target) $TIMESTAMP
+    src/main/take_snapshot $(source) $(target) $TIMESTAMP 'echo "<$(cat)>"'
 }
 
 then_create_directory () {
