@@ -1,5 +1,5 @@
 take_snapshot () {
-    true
+    src/main/take_snapshot
 }
 
 then_create_directory () {
