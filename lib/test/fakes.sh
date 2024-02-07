@@ -43,7 +43,7 @@ when_take_snapshot () {
 }
 
 when_check_snapshots () {
-    src/main/check_snapshots
+    CHECKSUM_CHECK="cat > $TMP/checksum_checks" COMPRESSION_DECOMPRESS="sed 's/^<\(.*\)>$/\1/'" src/main/check_snapshots $(target)
 }
 
 then_create_directory () {
@@ -117,6 +117,17 @@ then_target_has_hardlinks () {
     INODE_2="$(stat -c '%i' $(target)/$2)"
     if [ ! $INODE_1 = $INODE_2 ]; then
         echo "ERROR: in target, expecting $1 and $2 to have same inode number, but they are $INODE_1 and $INODE_2, respectively"
+        exit 1
+    fi
+}
+
+then_checksum_checks () {
+    echo -n "$1" > $TMP/expected
+    if ! diff $TMP/expected $TMP/checksum_checks > /dev/null; then
+        echo ERROR: expecting the following checksum checks: 
+        cat $TMP/expected
+        echo "\nERROR: but got:"
+        cat $TMP/checksum_checks
         exit 1
     fi
 }
