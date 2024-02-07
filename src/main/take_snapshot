@@ -9,7 +9,7 @@ if [ -L $TARGET/latest/all ]; then
 fi
 if [ ! -z "$(ls $SOURCE)" ]; then
     rsync $OPTS $SOURCE/ $TARGET/archive/all/$TIMESTAMP/data
-    (cd $TARGET/archive/all/$TIMESTAMP/data; find . -type f -printf '%P\0' | xargs -0 $CHECKSUM_CALCULATE | eval $COMPRESS_PIPE > $TARGET/archive/all/$TIMESTAMP/meta/sha1sum.gz)
+    (cd $TARGET/archive/all/$TIMESTAMP/data; find . -type f -printf '%P\0' | xargs -0 $CHECKSUM_CALCULATE | eval $COMPRESSION_COMPRESS > $TARGET/archive/all/$TIMESTAMP/meta/sha1sum.gz)
 fi
 rm -f $TARGET/latest/all
 ln -s ../archive/all/$TIMESTAMP $TARGET/latest/all

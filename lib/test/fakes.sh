@@ -39,7 +39,7 @@ given_source_directory_exists () {
 }
 
 when_take_snapshot () {
-    TIMESTAMP=$TIMESTAMP COMPRESS_PIPE='echo "<$(cat)>"' src/main/take_snapshot $(source) $(target)
+    TIMESTAMP=$TIMESTAMP COMPRESSION_COMPRESS='echo "<$(cat)>"' src/main/take_snapshot $(source) $(target)
 }
 
 then_create_directory () {
