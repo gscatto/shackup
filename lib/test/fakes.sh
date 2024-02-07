@@ -1,9 +1,13 @@
+source () {
+    echo $TMP/source
+}
+
 target () {
     echo $TMP/target
 }
 
 when_take_snapshot () {
-    src/main/take_snapshot '' $(target) $TIMESTAMP
+    src/main/take_snapshot $(source) $(target) $TIMESTAMP
 }
 
 then_create_directory () {
