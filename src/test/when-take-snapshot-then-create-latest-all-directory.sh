@@ -1,3 +1,0 @@
-given_source_directory_exists
-when_take_snapshot
-then_create_directory latest/all

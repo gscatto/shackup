@@ -69,3 +69,19 @@ FILE_ATTRIBUTES_HEADER='  | perm. bits | time of last data modification      | '
 get_file_attributes () {
     stat -c '| %A | %y |' "$1"
 }
+
+then_assert_symlink () {
+    FILE_PATH="$(target)/$1"
+    EXPECTED="$2"
+    if [ ! -L $FILE_PATH ]; then
+        echo ERROR: expecting $FILE_PATH to be a symlink
+        tree $(target)
+        exit 1
+    fi
+    ACTUAL="$(readlink $FILE_PATH)"
+    if [ ! "$ACTUAL" = "$EXPECTED" ]; then
+        echo "ERROR: expecting $FILE_PATH to be a symlink to $EXPECTED, got $ACTUAL"
+        tree $(target)
+        exit 1
+    fi
+}
