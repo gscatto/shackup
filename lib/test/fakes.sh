@@ -51,7 +51,7 @@ then_create_directory () {
     fi
 }
 
-then_file_exists () {
+then_target_has_file () {
     FILE_PATH=$(target)/$1
     FILE_CONTENTS="$2"
     if [ ! -f $FILE_PATH ]; then
