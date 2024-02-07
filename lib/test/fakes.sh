@@ -6,6 +6,27 @@ target () {
     echo $TMP/target
 }
 
+given_target_file () {
+    FILE_PATH=$1
+    FILE_CONTENTS=$2
+    mkdir -p $(target)/$(dirname $FILE_PATH)
+    echo "$FILE_CONTENTS" > $(target)/$FILE_PATH
+}
+
+given_target_symlink () {
+    SYMLINK_PATH=$1
+    SYMLINK_CONTENT=$2
+    mkdir -p $(target)/$(dirname $SYMLINK_PATH)
+    ln -s $SYMLINK_CONTENT $(target)/$SYMLINK_PATH
+}
+
+given_source_file () {
+    FILE_PATH=$1
+    FILE_CONTENTS=$2
+    mkdir -p $(source)/$(dirname $FILE_PATH)
+    echo "$FILE_CONTENTS" > $(source)/$FILE_PATH
+}
+
 given_file () {
     FILE_PATH=$1
     FILE_CONTENTS=$2
@@ -82,6 +103,15 @@ then_assert_symlink () {
     if [ ! "$ACTUAL" = "$EXPECTED" ]; then
         echo "ERROR: expecting $FILE_PATH to be a symlink to $EXPECTED, got $ACTUAL"
         tree $(target)
+        exit 1
+    fi
+}
+
+then_target_has_hardlinks () {
+    INODE_1="$(stat -c '%i' $(target)/$1)"
+    INODE_2="$(stat -c '%i' $(target)/$2)"
+    if [ ! $INODE_1 = $INODE_2 ]; then
+        echo "ERROR: in target, expecting $1 and $2 to have same inode number, but they are $INODE_1 and $INODE_2, respectively"
         exit 1
     fi
 }
