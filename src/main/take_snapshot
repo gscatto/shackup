@@ -2,13 +2,13 @@
 SOURCE=$1
 TARGET=$2
 TIMESTAMP=$3
-mkdir -p $TARGET/archive/all/$TIMESTAMP $TARGET/latest
+mkdir -p $TARGET/archive/all/$TIMESTAMP/data $TARGET/latest
 OPTS='-ac'
 if [ -L $TARGET/latest/all ]; then
-    OPTS="$OPTS --link-dest $(readlink -f $TARGET/latest/all)"
+    OPTS="$OPTS --link-dest $(readlink -f $TARGET/latest/all)/data"
 fi
 if [ ! -z "$(ls $SOURCE)" ]; then
-    rsync $OPTS $SOURCE/ $TARGET/archive/all/$TIMESTAMP
+    rsync $OPTS $SOURCE/ $TARGET/archive/all/$TIMESTAMP/data
 fi
 rm -f $TARGET/latest/all
 ln -s ../archive/all/$TIMESTAMP $TARGET/latest/all
