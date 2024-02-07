@@ -3,7 +3,7 @@ target () {
 }
 
 when_take_snapshot () {
-    src/main/take_snapshot $(target) $TIMESTAMP
+    src/main/take_snapshot '' $(target) $TIMESTAMP
 }
 
 then_create_directory () {
