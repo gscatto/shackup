@@ -1,8 +1,6 @@
 #!/usr/bin/env -S sh -eu
 SOURCE=$1
 TARGET=$2
-TIMESTAMP=$3
-COMPRESS_PIPE=$4
 mkdir -p $TARGET/archive/all/$TIMESTAMP/data $TARGET/archive/all/$TIMESTAMP/meta $TARGET/latest
 OPTS='-ac'
 if [ -L $TARGET/latest/all ]; then
