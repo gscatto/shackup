@@ -1,11 +1,11 @@
 #!/usr/bin/env -S sh -eu
 EXITCODE=0
-. lib/test/before-all.sh
+. lib/test/hooks/before-all.sh
 for TEST in $(find src/test -type f -name '*.sh'); do
-    if ! sh -c "set -eu && . lib/test/before-each.sh && $TEST_VARIABLES . $TEST && . lib/test/after-each.sh"; then
+    if ! sh -c "set -eu && . lib/test/hooks/before-each.sh && $TEST_VARIABLES . $TEST && . lib/test/hooks/after-each.sh"; then
         echo "ERROR: $TEST"
         EXITCODE=1
     fi
 done
-. lib/test/after-all.sh
+. lib/test/hooks/after-all.sh
 exit $EXITCODE
