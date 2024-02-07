@@ -1,2 +1,3 @@
 #!/usr/bin/env -S sh -eu
-mkdir -p $1/archive/all $1/current
+TIMESTAMP=$2
+mkdir -p $1/archive/all/$TIMESTAMP $1/current
