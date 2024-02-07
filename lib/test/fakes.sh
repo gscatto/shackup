@@ -91,7 +91,7 @@ get_file_attributes () {
     stat -c '| %A | %y |' "$1"
 }
 
-then_assert_symlink () {
+then_target_has_symlink () {
     FILE_PATH="$(target)/$1"
     EXPECTED="$2"
     if [ ! -L $FILE_PATH ]; then
