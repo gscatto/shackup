@@ -1,7 +1,7 @@
 #!/usr/bin/env -S sh -eu
 EXITCODE=0
 for TEST in $(find src/test -type f -name '*.sh'); do
-    if ! sh -c ". $TEST"; then
+    if ! sh -c "set -eu && . $TEST"; then
         echo "ERROR: $TEST"
         EXITCODE=1
     fi
