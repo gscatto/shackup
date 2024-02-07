@@ -42,6 +42,10 @@ when_take_snapshot () {
     TIMESTAMP=$TIMESTAMP COMPRESSION_COMPRESS='echo "<$(cat)>"' src/main/take_snapshot $(source) $(target)
 }
 
+when_check_snapshots () {
+    src/main/check_snapshots
+}
+
 then_create_directory () {
     DIRECTORY=$(target)/$1
     if [ ! -d $DIRECTORY ]; then
