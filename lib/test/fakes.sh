@@ -2,7 +2,7 @@ target () {
     echo $TMP/target
 }
 
-take_snapshot () {
+when_take_snapshot () {
     src/main/take_snapshot $(target) $TIMESTAMP
 }
 
