@@ -1,4 +1,9 @@
 #!/usr/bin/env -S sh -eu
+EXITCODE=0
 for TEST in $(find src/test -type f -name '*.sh'); do
-    sh -c ". $TEST"
+    if ! sh -c ". $TEST"; then
+        echo "ERROR: $TEST"
+        EXITCODE=1
+    fi
 done
+exit $EXITCODE
