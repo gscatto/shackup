@@ -46,3 +46,26 @@ then_file_exists () {
         exit 1
     fi
 }
+
+then_file_has_attributes () {
+    FILE_PATH="$(target)/$1"
+    EXPECTED="$2"
+    ACTUAL="$(get_file_attributes $FILE_PATH)"
+    if [ ! "$ACTUAL" = "$EXPECTED" ]; then
+        echo "ERROR: $FILE_PATH attributes do not match (Expected/Actual):"
+        echo "$FILE_ATTRIBUTES_HEADER"
+        echo "E $EXPECTED"
+        echo "A $ACTUAL"
+        exit 1
+    fi
+}
+
+get_source_file_attributes () {
+    FILE_PATH="$(source)/$1"
+    get_file_attributes $FILE_PATH
+}
+
+FILE_ATTRIBUTES_HEADER='  | perm. bits | time of last data modification      | '
+get_file_attributes () {
+    stat -c '| %A | %y |' "$1"
+}
