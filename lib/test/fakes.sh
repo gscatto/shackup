@@ -68,7 +68,7 @@ then_target_has_file () {
     fi
 }
 
-then_file_has_attributes () {
+then_target_file_has_attributes () {
     FILE_PATH="$(target)/$1"
     EXPECTED="$2"
     ACTUAL="$(get_file_attributes $FILE_PATH)"
