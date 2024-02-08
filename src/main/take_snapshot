@@ -1,8 +1,6 @@
 #!/usr/bin/env -S sh -eu
 SOURCE=$1
 TARGET=$2
-CHECKSUM_CALCULATE="${CHECKSUM_CALCULATE:-sha1sum}"
-COMPRESSION_COMPRESS="${COMPRESSION_COMPRESS:-gzip -9}"
 mkdir -p $TARGET/archive/all/$TIMESTAMP/data $TARGET/archive/all/$TIMESTAMP/meta $TARGET/latest
 OPTS='-ac'
 if [ -L $TARGET/latest/all ]; then
