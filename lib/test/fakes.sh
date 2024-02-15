@@ -39,7 +39,7 @@ given_source_directory_exists () {
 }
 
 when_take_snapshot () {
-    TIMESTAMP=20240207T1742CET CHECKSUM_CALCULATE='cut -z -d/ -f5- | sed "s/\x0/;/"' COMPRESSION_COMPRESS='echo "<$(cat)>"' src/main/take_snapshot $(source) $(target)
+    DATETIME_TIMESTAMP='echo 20240207T1742CET' CHECKSUM_CALCULATE='cut -z -d/ -f5- | sed "s/\x0/;/"' COMPRESSION_COMPRESS='echo "<$(cat)>"' src/main/take_snapshot $(source) $(target)
 }
 
 when_check_snapshots () {
