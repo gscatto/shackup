@@ -1,5 +1,4 @@
 #!/usr/bin/env -S sh -eu
-TARGET=$1
 if [ -d $TARGET ]; then
     for TIMESTAMP in $(find $TARGET/archive/all -maxdepth 1 -mindepth 1 -type d -exec basename {} \;); do
         SHA1SUM_GZ="$TARGET/archive/all/$TIMESTAMP/meta/sha1sum.gz"
